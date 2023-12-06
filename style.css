@@ -9,24 +9,25 @@ html {
 }
 
 .page {
-    position: relative;
-    display: flex; /*(почему при флесксе страница стала нормальной)*/
-    justify-content: center;
-    height: 100%;
-    margin: 0 auto;
+  position: relative;
+  display: flex; /*(почему при флесксе страница стала нормальной)*/
+  justify-content: center;
+  height: 100%;
+  margin: 0 auto;
+  min-width: 800px;
 }
 
 .page__video {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    inset: 0;
-    object-fit: cover;
-    object-position: center;
+  position: absolute; /* почему тут актуально это свойство*/
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
 }
 
 .page__title {
-    z-index: 1;
+  z-index: 1;
   color: #000;
   text-align: center;
   font-family: Raleway;
@@ -37,4 +38,43 @@ html {
   letter-spacing: 4.06px;
   text-transform: uppercase;
   max-width: 720px;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: rgb(255 255 255 / 0.3);
+}
+
+.page__title::after {
+  content: "*";
+}
+
+.page__title:hover {
+  color: #4c4c4c;
+  cursor: default;
+}
+
+.page__title:hover::before {
+  content: "На самом деле нет.Важнее &mdash; научиться ошибаться.";
+  position: absolute;
+  top: 180px;
+  right: 20px;
+  max-width: 760px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 36px 44px;
+  box-shadow: 0 12px 0 #000;
+  text-align: left;
+  color: #000;
+  font-family: Raleway;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: normal;
+  background-color: white;
+  white-space: pre;
 }
